@@ -13,6 +13,7 @@ import telepot
 import unicodedata
 import urllib3
 import re
+import subprocess
 
 search_time = 0.2  # 잔여백신을 해당 시간마다 한번씩 검색합니다. 단위: 초
 urllib3.disable_warnings()
@@ -230,6 +231,8 @@ def resource_path(relative_path):
 
 def play_tada():
     playsound(resource_path('tada.mp3'))
+    if sys.platform == 'darwin':
+        subprocess.run(['say', '-v', 'yuna', '백신 예약이 완료되었습니다.'])
 
 
 def play_xylophon():
