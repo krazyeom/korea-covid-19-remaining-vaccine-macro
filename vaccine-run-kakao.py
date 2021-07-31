@@ -240,9 +240,13 @@ def close(success=False):
     if success is True:
         play_tada()
         send_msg("잔여백신 예약 성공!! \n 카카오톡지갑을 확인하세요.")
+        if sys.platform == 'darwin':
+            os.system('say -v yuna 잔여 백신 예약 성공. 카카오톡 지갑을 확인하세요.')
     elif success is False:
         play_xylophon()
         send_msg("오류와 함께 잔여백신 예약 프로그램이 종료되었습니다.")
+        if sys.platform == 'darwin':
+            os.system('say -v yuna 오류와 함께 잔여백신 예약 프로그램이 종료되었습니다.')
     else:
         pass
     input("Press Enter to close...")
